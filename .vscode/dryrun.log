@@ -1,0 +1,13 @@
+make: Entering directory `/Users/ozeidan/Documents/GitHub/C-to-MIPS-Compiler'
+bison -v -d src/parser.y -o src/compiler_parser.tab.cpp 
+c++  -std=c++17 -W -Wall -g -Wno-unused-parameter -I include  -c -o src/compiler_parser.tab.o src/compiler_parser.tab.cpp
+ 
+bison -v -d src/parser.y -o src/compiler_parser.tab.cpp 
+flex -o src/compiler_flexer.yy.cpp src/lexer.flex
+c++  -std=c++17 -W -Wall -g -Wno-unused-parameter -I include  -c -o src/compiler_flexer.yy.o src/compiler_flexer.yy.cpp
+c++  -std=c++17 -W -Wall -g -Wno-unused-parameter -I include  -c -o src/main.o src/main.cpp
+mkdir -p bin
+mkdir -p out
+g++ -std=c++17 -W -Wall -g -Wno-unused-parameter -I include src/compiler_parser.tab.o src/compiler_flexer.yy.o src/main.o -o bin/c_compiler
+make: Leaving directory `/Users/ozeidan/Documents/GitHub/C-to-MIPS-Compiler'
+ 
